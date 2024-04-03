@@ -55,7 +55,7 @@ namespace PassIn.Application.UseCases.Events.RegisterAttendee
                 throw new ConflictException("You can not register twice on the same event");
 
             var attendeesForEvent = _dbContext.Attendees.Count(attendee => attendee.Event_Id == eventId);
-            if (attendeesForEvent > eventEntity.Maximum_Attendees)
+            if (attendeesForEvent == eventEntity.Maximum_Attendees)
                 throw new ErrorOnValidationException("There is no room for this event.");
         }
 
